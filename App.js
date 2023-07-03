@@ -12,14 +12,53 @@ import {
 } from "react-native";
 import normalize from "react-native-normalize";
 import Header from "./src/components/Header";
-import ShowModals from "./src/components/ShowModals";
+
+
 
 export default function App() {
+
+ 
   const [itemText, setItemText] = useState("");
   const [itemText2, setItemText2] = useState("");
   const [items, setItems] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+
+  const MoviePosters = [
+    {id: 1,
+    title: 'The Bodyguard',
+   uri: "https://dx35vtwkllhj9.cloudfront.net/trafalgarreleasing/the-bodyguard-30th-anniversary/images/regions/intl/onesheet.jpg",}
+    , {
+      id: 2,
+      title: 'TopGun',
+      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH1S-zdlKssoDaCkb9I7Q-OfOPRDxT8hViCg&usqp=CAU",
+
+    }, {
+      id: 3,
+      title: 'Pulp Fiction',
+      uri: "https://i.ytimg.com/vi/rK8_Xf_2pfg/hqdefault.jpg",
+
+    },
+    {
+      id: 4,
+      title: 'Shrek',
+      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj5rs3eGXeRznBNgo54idB63bbZducLtWrMQ&usqp=CAU",
+
+    },
+    {
+      id: 5,
+      title: 'Babylon',
+      uri: "https://popcornforone.co.uk/wp-content/uploads/2023/01/b25lY21zOjFhOGE2ZGNlLTkzOWYtNGE0NC1iNmU2LTU1NDliZThkNTIxNDoyZWU5YTIwNS1hMWQyLTRkNWUtYmQ2OS1jZjc5MWViODMzNDY-650x434.jpg",
+
+    },
+    {
+    id: 6,
+    title: 'Jumanji',
+    uri: "https://stz1.imgix.net/Web/contentId/38790/type/KEY/dimension/1920x1080/lang/en-US?auto=compress,format&w=360&fit=max",
+
+  }]
+  
+
 
   const image = {
     uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH1S-zdlKssoDaCkb9I7Q-OfOPRDxT8hViCg&usqp=CAU",
@@ -33,10 +72,21 @@ export default function App() {
   };
 
   const [selectedMovies, setSelectedMovies] = useState(image);
+ 
+ 
+  const selectedHandler = () => { 
 
-  const selectedHandler = () => {
-    setSelectedMovies(image3);
-  };
+function generateIdRandom (min, max) {
+  min = Math.ceil(1);
+  max = Math.floor(6);
+  return (Math.floor(Math.random() * (1 + max - min) + min));
+
+ } 
+  setSelectedMovies(MoviePosters.filter(movie => movie.id === generateIdRandom()));
+
+
+
+  }; console.log('viva yo')
 
   const onChangeText = (text) => {
     setItemText(text);
